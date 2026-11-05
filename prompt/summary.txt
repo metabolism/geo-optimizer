@@ -1,0 +1,7 @@
+Rédige un résumé analytique et dense (maximum 900 caractères) du contenu de cette page.
+Concentre-toi uniquement sur les thématiques clés, les projets et les objectifs pour optimiser une recherche sémantique ultérieure.
+Ne propose pas de titre à ce résumé.
+
+Contenu de la page : {title}
+
+{raw_text}

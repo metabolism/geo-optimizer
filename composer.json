@@ -1,0 +1,24 @@
+{
+  "name": "metabolism/geo-optimizer",
+  "type": "wordpress-plugin",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Jérome Barbato",
+      "email": "jerome.barbato@gmail.com",
+      "homepage": "https://github.com/jerome-barbato"
+    }
+  ],
+  "license": "MIT",
+  "description": "Optimisation GEO avec VectorDB (Résumé synthétique, FAQ et détection des divergences).",
+  "keywords": ["plugin","wordpress","geo"],
+  "extra": {
+    "branch-alias": {
+      "dev-1.0.x": "1.0.x-dev"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "aws/aws-sdk-php": "^3.402"
+  }
+}

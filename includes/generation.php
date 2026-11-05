@@ -38,6 +38,9 @@ class GEOOPT_Generation{
         if( !$post )
             wp_send_json(['error'=>'Post not found'], 500);
 
+        if (!current_user_can('edit_post', $post_id))
+            wp_send_json_error(['message' => 'Autorisation refusée.'], 403);
+
         $geo_evaluation = $this->generate_content($post, [
             'custom_instruction'=>$custom_instruction,
             'update_seo_meta'=>$update_seo_meta,

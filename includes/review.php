@@ -25,6 +25,14 @@ class GEOOPT_Review
 
         $post_id = intval($_POST['post_id']??0);
 
+        $post = get_post($post_id);
+
+        if( !$post )
+            wp_send_json(['error'=>'Post not found'], 500);
+
+        if (!current_user_can('edit_post', $post_id))
+            wp_send_json_error(['message' => 'Autorisation refusée.'], 403);
+
         $geo_evaluation = GEOOPT_Helper::set_geo_evaluation($post_id, ['needs_review'=>false]);
 
         wp_send_json(['success'=>true, 'evaluation'=>$geo_evaluation]);

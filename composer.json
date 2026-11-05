@@ -15,10 +15,23 @@
   "extra": {
     "branch-alias": {
       "dev-1.0.x": "1.0.x-dev"
-    }
+    },
+    "aws/aws-sdk-php": [
+      "Bedrock",
+      "BedrockRuntime",
+      "BedrockAgentRuntime"
+    ]
   },
   "require": {
     "guzzlehttp/guzzle": "^7.0",
     "aws/aws-sdk-php": "^3.402"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "Aws\\Script\\Composer\\Composer::removeUnusedServices"
+    ],
+    "post-update-cmd": [
+      "Aws\\Script\\Composer\\Composer::removeUnusedServices"
+    ]
   }
 }

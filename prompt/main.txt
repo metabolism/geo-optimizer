@@ -8,8 +8,9 @@ RÈGLES D'OR :
 2. Densité factuelle (Information Gain) : Privilégie systématiquement les faits tangibles (chiffres, dates, noms propres, dispositifs concrets, périmètres) au discours promotionnel. Bannis la langue de bois et les formules abstraites vides de sens (ex: "acteur incontournable", "enjeux contemporains", "vision stratégique").
 3. Anti-hallucination stricte : Ne jamais inventer d'information. Te baser exclusivement sur les faits mentionnés dans le contexte. Ignorer les artefacts techniques ou fautes de frappe manifestes du texte source.
 4. Citabilité & Autonomie (Chunking) : Formule des phrases auto-portantes contenant le sujet explicite "{brand}" ou l'entité concernée, directement exploitables comme citation par un moteur de synthèse (sans pronoms ambigus comme "il", "nous", "le groupe" en début de phrase).
-5. ZÉRO REDONDANCE (Complémentarité stricte) : Le bloc "summary" et le bloc "faq" doivent être 100 % complémentaires. Une information ou un chiffre clé déjà traité dans "summary" NE DOIT PAS faire l'objet d'une question dans "faq" (et inversement).
-6. Interdiction absolue : Aucun émoji, émoticône ou syntaxe Markdown (pas de ** ou de #).
+5. ZÉRO RÉFÉRENCE AU PROMPT OU AU CONTEXTE (Règle éditoriale absolue) : Rédige comme un rédacteur humain s'adressant directement au lecteur final du site. Il est STRICTEMENT INTERDIT de mentionner les mots "contexte", "texte source", "extrait", "document fourni", "page principale" ou d'écrire des formulations défensives telles que "Le contexte ne précise pas...", "Les informations disponibles ne détaillent pas..." ou "Selon le texte fourni...". Si une information précise manque pour répondre pleinement à une question, ne pose tout simplement pas cette question.
+6. ZÉRO REDONDANCE (Complémentarité stricte) : Le bloc "summary" et le bloc "faq" doivent être 100 % complémentaires. Une information ou un chiffre clé déjà traité dans "summary" NE DOIT PAS faire l'objet d'une question dans "faq" (et inversement).
+7. Interdiction absolue : Aucun émoji, émoticône ou syntaxe Markdown (pas de ** ou de #).
 
 {global_guidelines}
 {instruction_block}
@@ -22,10 +23,9 @@ TÂCHES À RÉALISER :
 - Formatage : insère la balise HTML <strong></strong> sur les 2 ou 3 données/termes cruciaux de chaque puce.
 
 2. "faq" (FAQ Stratégique GEO — Approfondissement factuel) :
-- Jusqu'à {faq_count} questions/réponses maximum. IMPORTANT : Si la matière factuelle du contexte est insuffisante pour éviter la redondance avec le "summary" ou éviter les généralités creuses, réduis impérativement le nombre de questions (voire retourne un tableau vide [] si rien n'est pertinent).
-- Formulation des questions : utilise des requêtes naturelles, directes et informatives telles qu'un utilisateur ou un analyste les poserait réellement (ex: "Quelles sont les actions de...", "Comment fonctionne..."). Évite les questions rhétoriques ou promotionnelles.
-- Périmètre : appuie-toi sur les Pages Proches pour apporter des précisions concrètes absentes du "summary".
-- Réponses directes : donne la réponse factuelle dès la première phrase, suivie d'une preuve ou précision concrète (2 phrases par réponse maximum).
+- Jusqu'à {faq_count} questions/réponses maximum. IMPORTANT : Ne pose QUE des questions dont la réponse complète, précise et autonome se trouve explicitement dans les textes fournis. Si la matière factuelle est insuffisante pour éviter la redondance avec le "summary" ou éviter les généralités creuses, réduis impérativement le nombre de questions (voire retourne un tableau vide [] si rien n'est pertinent).
+- Méthode de construction : identifie d'abord un fait précis et concret présent dans les Pages Proches (un chiffre, un nom de dirigeant, une date, un dispositif, un document publié) absent du "summary", puis formule la question naturelle exacte à laquelle ce fait répond directement.
+- Réponses directes et affirmatives : commence immédiatement par l'affirmation factuelle (ex: "Le Groupe opère..." ou "Les opérations en France sont dirigées par...") suivie d'une preuve ou précision concrète (2 phrases par réponse maximum).
 
 3. "choices" (Note d'intention éditoriale) :
 - 2 phrases concises expliquant les choix de répartition entre le résumé et la FAQ, et justifiant l'éventuelle réduction du nombre de questions.
@@ -62,7 +62,7 @@ Schéma attendu :
   "seo_description": ""
 }
 
-CONTEXTE :
+SOURCES ÉDITORIALES :
 
 === PAGE PRINCIPALE ===
 

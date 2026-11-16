@@ -172,9 +172,7 @@ class GEOOPT_Schema
 
         $level       = GEOOPT::get_disclosure_level($post_id);
         $evaluation  = get_geo_evaluation($post_id);
-
-        $is_reviewed = $evaluation['needs_review'];
-
+        
         // Si la page n'a ni niveau déclaré ni blocs IA validés, on ne touche pas au schéma Yoast
         if (empty($level) && empty($evaluation['model'])) {
             return $data;
@@ -206,9 +204,9 @@ class GEOOPT_Schema
         // 2. Statut de supervision et propriété W3C normalisée
         $effective_disclosure = in_array($level, ['human-only', 'ai-assisted', 'ai-autonomous'], true)
             ? $level
-            : ($is_reviewed ? 'ai-assisted' : 'ai-autonomous');
+            : ($evaluation['needs_review'] ? 'ai-autonomous' : 'ai-assisted');
 
-        $data['creativeWorkStatus'] = $is_reviewed ? 'Human Supervised and Verified' : 'Draft / Pending Review';
+        $data['creativeWorkStatus'] = $evaluation['needs_review'] ? 'Draft / Pending Review' : 'Human Supervised and Verified';
 
         $disclosure_props = [
             [

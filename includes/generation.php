@@ -1,15 +1,13 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 class GEOOPT_Generation{
 
     private $provider;
 
-    private $options;
-
     public function __construct()
     {
-        $this->options = get_option('geoopt_settings', []);
-
         add_action('wp_ajax_geo_opt_check_connection', [$this, 'check_connection_handler']);
         add_action('geo_opt_generate', [$this, 'generate_content'], 10, 2);
         add_action('wp_ajax_geo_opt_generate', [$this, 'ajax_generate_handler']);
@@ -25,7 +23,7 @@ class GEOOPT_Generation{
         $nonce = sanitize_text_field(wp_unslash($_POST['nonce']??''));
 
         if( !wp_verify_nonce($nonce, 'geo-opt') )
-            wp_send_json(['error'=>'Nonce not valid'], 500);
+            wp_send_json_error(['message'=>'Nonce not valid'], 500);
 
         $post_id = intval($_POST['post_id']??0);
 
@@ -36,7 +34,7 @@ class GEOOPT_Generation{
         $post = get_post($post_id);
 
         if( !$post )
-            wp_send_json(['error'=>'Post not found'], 500);
+            wp_send_json_error(['message'=>'Post not found'], 500);
 
         if (!current_user_can('edit_post', $post_id))
             wp_send_json_error(['message' => 'Autorisation refusée.'], 403);
@@ -94,9 +92,9 @@ class GEOOPT_Generation{
         }
 
         $main_prompt = GEOOPT_Helper::get_prompt('main', [
-            'style'=> empty($this->options['style']??'')?'ton clair, professionnel et synthétique':$this->options['style'],
-            'global_guidelines'=> $this->options['global_guidelines']??'',
-            'faq_count'=> $this->options['faq_count']??4,
+            'style'=> GEOOPT::get_option('style', 'ton clair, professionnel et synthétique'),
+            'global_guidelines'=>GEOOPT::get_option('global_guidelines'),
+            'faq_count'=> GEOOPT::get_option('faq_count', 4),
             'brand'=> $brand,
             'title'=> $title,
             'url'=> $permalink,
@@ -120,6 +118,8 @@ class GEOOPT_Generation{
             'has_summary'=>!empty($response['summary']??''),
             'has_faq'=>!empty($response['faq']??[]),
             'last_generated'=>current_time('mysql'),
+            'model'=>GEOOPT::get_option('model'),
+            'provider'=>GEOOPT::get_option('provider'),
             'needs_review'=>true,
             'is_outdated'=>false,
             'choices'=>!empty($response['choices']??''),

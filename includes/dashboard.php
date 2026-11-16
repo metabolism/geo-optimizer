@@ -1,14 +1,13 @@
 <?php
-class GEOOPT_Dashboard{
 
-    private $options;
+if (!defined('ABSPATH')) exit;
+class GEOOPT_Dashboard{
 
     public function __construct()
     {
         if( !is_admin() || (in_array($_SERVER['REMOTE_ADDR']??'127.0.0.1', ['127.0.0.1', '::1']) && !GEOOPT_DEBUG) )
             return;
 
-        $this->options = get_option('geoopt_settings');
 
         add_action( 'wp_dashboard_setup', [$this, 'add_dashboard_widgets'] );
     }
@@ -29,7 +28,7 @@ class GEOOPT_Dashboard{
         $co2PerPageview = 0;
         $total_items = $computed_items = 0;
 
-        foreach ($this->options['post_types']??[] as $post_type){
+        foreach (GEOOPT::get_option('post_types', []) as $post_type){
 
             $results = $wpdb->get_results(
                 $wpdb->prepare("SELECT p.ID as post_id, pm.meta_value FROM {$wpdb->posts} p INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id WHERE pm.meta_key = 'geoopt_details' AND p.post_type = %s", $post_type)
@@ -51,7 +50,7 @@ class GEOOPT_Dashboard{
             $total_items += $total_posts->publish;
         }
 
-        foreach ($this->options['taxonomies']??[] as $taxonomy){
+        foreach (GEOOPT::get_option('taxonomies', []) as $taxonomy){
 
             $results = $wpdb->get_results(
                 $wpdb->prepare(" SELECT t.term_id, tm.meta_value FROM {$wpdb->terms} t INNER JOIN {$wpdb->term_taxonomy} tt ON t.term_id = tt.term_id INNER JOIN {$wpdb->termmeta} tm ON t.term_id = tm.term_id WHERE tt.taxonomy = %s AND tm.meta_key = 'geoopt_details'", $taxonomy)
@@ -82,7 +81,7 @@ class GEOOPT_Dashboard{
         else
             $performance_score['general'] = $performance_score['desktop'];
 
-        $co2_reference = floatval($this->options['reference']??0.55);
+        $co2_reference = floatval(GEOOPT::get_option('reference', 0.55));
 
         ?>
         <div class="geoopt-widget">

@@ -1,15 +1,20 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 class GEOOPT_Actions{
 
-    private $options;
+    private $ai_disclosure_levels = [
+            ''               => 'Non spécifié',
+            'human-only'     => '100% Rédaction humaine',
+            'ai-assisted'    => 'Assisté par IA (Relecture humaine)',
+            'ai-autonomous'  => 'Génération 100% autonome',
+    ];
 
     public function __construct()
     {
-        if( !is_admin() || !get_option('geoopt_enabled') )
+        if( !is_admin() || !GEOOPT::is_enabled() )
             return;
-
-        $this->options = get_option('geoopt_settings');
 
         add_action('add_meta_boxes', [$this, 'add_meta_boxes'] );
         add_action('save_post', [$this, 'verify_blocks_on_save'], 20, 2);
@@ -26,12 +31,23 @@ class GEOOPT_Actions{
         if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id))
             return;
 
-        if (!in_array($post->post_type, $this->options['post_types'], true))
+        if (!in_array($post->post_type, GEOOPT::get_option('post_types'), true))
             return;
 
+        if ( isset($_POST['geo_opt_nonce']) && current_user_can('edit_post', $post_id) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['geo_opt_nonce'])), 'geo_opt_save_action')) {
+
+            $geo_ai_disclosure_level = sanitize_key($_POST['geo_ai_disclosure_level']??false);
+
+            if( $geo_ai_disclosure_level and isset($this->ai_disclosure_levels[$geo_ai_disclosure_level]) )
+                update_post_meta($post_id,'geo_ai_disclosure_level', $geo_ai_disclosure_level);
+
+            $geo_custom_prompt = sanitize_textarea_field($_POST['geo_custom_prompt']??'');
+            update_post_meta($post_id,'_geo_custom_prompt', $geo_custom_prompt);
+        }
+
         // 3. Récupérer les noms des blocs configurés
-        $summary_block_name = $this->options['summary_block_name'];
-        $faq_block_name     = $this->options['faq_block_name'];
+        $summary_block_name = GEOOPT::get_option('summary_block_name');
+        $faq_block_name     = GEOOPT::get_option('faq_block_name');
 
         // 4. Analyser les blocs du post_content
         $blocks = parse_blocks($post->post_content);
@@ -69,7 +85,7 @@ class GEOOPT_Actions{
      */
     public function add_meta_boxes() {
 
-        foreach ($this->options['post_types']??[] as $post_type){
+        foreach (GEOOPT::get_option('post_types', []) as $post_type){
 
             add_meta_box(
                 'geoopt_calculator',
@@ -92,14 +108,10 @@ class GEOOPT_Actions{
 
         // Évaluation de l'état actuel de la page via le helper
         $eval = get_geo_evaluation($post->ID);
-        $current_level = get_post_meta($post->ID, '_geo_ai_disclosure_level', true);
+        $current_level = GEOOPT::get_disclosure_level($post->ID);
+        $geo_custom_prompt = get_post_meta($post->ID, '_geo_custom_prompt', true);
 
-        $levels = [
-                'none'            => '100% Rédaction humaine',
-                'assisted'        => 'Assisté par IA (Relecture humaine)',
-                'semi_autonomous' => 'Génération IA supervisée',
-                'autonomous'      => 'Génération 100% autonome',
-        ];
+        wp_nonce_field('geo_opt_save_action', 'geo_opt_nonce');
 
         ?>
         <div class="geo-sidebar-wrapper">
@@ -111,7 +123,7 @@ class GEOOPT_Actions{
                 </label>
 
                 <select id="geo_ai_disclosure_level" name="geo_ai_disclosure_level" class="geo-disclosure-select">
-                    <?php foreach ($levels as $val => $label): ?>
+                    <?php foreach ($this->ai_disclosure_levels as $val => $label): ?>
                         <option value="<?php echo esc_attr($val); ?>" <?php selected($current_level, $val); ?>>
                             <?php echo esc_html($label); ?>
                         </option>
@@ -136,11 +148,11 @@ class GEOOPT_Actions{
 
             <!-- Alertes & Statuts -->
             <div class="geo-status-checklist">
-                <a href="#" data-target-block="<?php echo esc_attr($this->options['summary_block_name']); ?>" class="geo-check-item <?php echo $eval['has_summary'] ? 'is-valid' : 'is-missing'; ?>">
+                <a href="#" data-target-block="<?php echo esc_attr(GEOOPT::get_option('summary_block_name')); ?>" class="geo-check-item <?php echo $eval['has_summary'] ? 'is-valid' : 'is-missing'; ?>">
                     <span class="dashicons <?php echo $eval['has_summary'] ? 'dashicons-yes-alt' : 'dashicons-dismiss'; ?>"></span>
                     Bloc Résumé
                 </a>
-                <a href="#" data-target-block="<?php echo esc_attr($this->options['faq_block_name']); ?>" class="geo-check-item <?php echo $eval['has_faq'] ? 'is-valid' : 'is-missing'; ?>">
+                <a href="#" data-target-block="<?php echo esc_attr(GEOOPT::get_option('faq_block_name')); ?>" class="geo-check-item <?php echo $eval['has_faq'] ? 'is-valid' : 'is-missing'; ?>">
                     <span class="dashicons <?php echo $eval['has_faq'] ? 'dashicons-yes-alt' : 'dashicons-dismiss'; ?>"></span>
                     Bloc FAQ
                 </a>
@@ -169,7 +181,7 @@ class GEOOPT_Actions{
             <!-- Formulaire de déclenchement -->
             <div class="geo-action-box">
                 <label for="geo_custom_prompt"><strong>Consigne spécifique (optionnel) :</strong></label>
-                <textarea id="geo_custom_prompt" rows="3" placeholder="Ex: Met l'accent sur les dates clés ou les aspects régionaux..." style="width:100%; margin: 6px 0 10px; font-size:12px;"></textarea>
+                <textarea id="geo_custom_prompt" name="geo_custom_prompt" rows="3" placeholder="Ex: Met l'accent sur les dates clés ou les aspects régionaux..." style="width:100%; margin: 6px 0 10px; font-size:12px;"><?=$geo_custom_prompt?></textarea>
 
                 <div class="geo-checkbox-row" >
                     <label for="geo_update_seo_meta">

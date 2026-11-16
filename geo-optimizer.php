@@ -37,5 +37,5 @@ if( !function_exists('get_geo_evaluation') ){
 
 // Instantiate.
 add_action('plugins_loaded', function () {
-    new GEOOPT_MAIN();
+    new GEOOPT();
 });

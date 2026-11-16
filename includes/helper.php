@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 class GEOOPT_Helper{
 
     /**
@@ -61,7 +63,9 @@ class GEOOPT_Helper{
             'has_discrepancy'=>false,
             'discrepancy_txt'=>'',
             'has_seo_title'=>false,
-            'has_seo_metadesc'=>false
+            'has_seo_metadesc'=>false,
+            'model'=>'',
+            'provider'=>''
         ], $eval);
 
         $eval['score'] = self::get_geo_score($eval);
@@ -225,7 +229,7 @@ class GEOOPT_Helper{
                 'name' => $block_name,
                 'data' => $block_data,
                 'className' => 'is-pending-review',
-                'mode' => 'preview',
+                'mode' => 'preview'
             ],
             'innerBlocks'  => [],
             'innerHTML'    => '',
@@ -297,10 +301,8 @@ class GEOOPT_Helper{
         if (!$post || empty($post->post_content))
             return '';
 
-        $options = get_option('geoopt_settings');
-
-        $summary_block = $options['summary_block_name'];
-        $faq_block     = $options['faq_block_name'];
+        $summary_block = GEOOPT::get_option('summary_block_name');
+        $faq_block     = GEOOPT::get_option('faq_block_name');
 
         $excluded_blocks = [$summary_block, $faq_block];
 
@@ -405,7 +407,7 @@ class GEOOPT_Helper{
      */
     public static function insert_blocks($post, $data, $overwrite = false){
 
-        $options = get_option('geoopt_settings');
+        $options = GEOOPT::get_option();
         $eval = self::get_geo_evaluation($post->ID);
 
         if( $overwrite || !$eval['has_summary'] ){

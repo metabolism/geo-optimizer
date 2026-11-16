@@ -1,11 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) exit;
 class GEOOPT_Review
 {
-    private $options;
-
     public function __construct() {
-
-        $this->options = get_option('geoopt_settings', []);
 
         add_filter('pre_render_block', [$this, 'front_filter_unreviewed_block'], 10, 2);
         add_filter('render_block', [$this, 'admin_filter_unreviewed_block'], 1, 2);
@@ -57,8 +55,8 @@ class GEOOPT_Review
             return $pre_render;
 
         $target_blocks = array_filter([
-            $this->options['summary_block_name']??'',
-            $this->options['faq_block_name']??''
+            GEOOPT::get_option('summary_block_name', ''),
+            GEOOPT::get_option('faq_block_name', '')
         ]);
 
         if (in_array($parsed_block['blockName'], $target_blocks, true))
@@ -83,8 +81,8 @@ class GEOOPT_Review
             return $block_content;
 
         $target_blocks = array_filter([
-            $this->options['summary_block_name']??'',
-            $this->options['faq_block_name']??''
+            GEOOPT::get_option('summary_block_name', ''),
+            GEOOPT::get_option('faq_block_name', '')
         ]);
 
         if (in_array($block['blockName'], $target_blocks, true)) {

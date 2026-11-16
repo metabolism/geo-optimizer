@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 use Aws\BedrockAgentRuntime\BedrockAgentRuntimeClient;
 use Aws\BedrockRuntime\BedrockRuntimeClient;
 
@@ -8,15 +10,12 @@ class GEOOPT_AWS_Provider implements GEOOPT_Provider {
 
     private $bedrock_agent_runtime_client;
     private $bedrock_runtime_client;
-    private $options;
 
     public function __construct()
     {
         //load library
         if( !class_exists('Aws\Bedrock\BedrockClient') )
             require GEOOPT_DIR . '/vendor/autoload.php';
-
-        $this->options = get_option('geoopt_settings', []);
     }
 
     /**
@@ -39,7 +38,7 @@ class GEOOPT_AWS_Provider implements GEOOPT_Provider {
         $query_text = mb_substr($summary, 0, 900);
 
         $retrieve_response = $agent_runtime->retrieve([
-            'knowledgeBaseId' => $this->options['kb_id'],
+            'knowledgeBaseId' => GEOOPT::get_option('kb_id'),
             'retrievalQuery'  => ['text' => $query_text],
             'retrievalConfiguration' => [
                 'managedSearchConfiguration' => [
@@ -93,7 +92,7 @@ class GEOOPT_AWS_Provider implements GEOOPT_Provider {
         $runtime = $this->get_bedrock_runtime_client();
 
         $args = [
-            'modelId' => $this->options['model']??'eu.anthropic.claude-sonnet-4-6',
+            'modelId' => GEOOPT::get_option('model', 'eu.anthropic.claude-sonnet-4-6'),
             'messages' => [[
                 'role' => 'user',
                 'content' => [['text' => $prompt]]]
@@ -136,9 +135,9 @@ class GEOOPT_AWS_Provider implements GEOOPT_Provider {
      */
     public function get_credentials() {
 
-        $access_key = GEOOPT_Helper::decrypt_secret($this->options['aws_access_key_id']??'');
-        $secret_key = GEOOPT_Helper::decrypt_secret($this->options['aws_secret_access_key']??'');
-        $region = $this->options['aws_region']??'';
+        $access_key = GEOOPT_Helper::decrypt_secret(GEOOPT::get_option('aws_access_key_id', ''));
+        $secret_key = GEOOPT_Helper::decrypt_secret(GEOOPT::get_option('aws_secret_access_key', ''));
+        $region = GEOOPT::get_option('aws_region', '');
 
         if (empty($access_key) || empty($secret_key) || empty($region))
             throw new \Exception('Identifiants AWS non renseignés.');

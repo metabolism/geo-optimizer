@@ -1,46 +1,14 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
+
 class GEOOPT_Tools{
 
     private $options;
 
     public function __construct() {
 
-        $this->options = get_option('geoopt_settings');
-
-        if( empty($this->options['pagespeed_api_key']??'') || (in_array($_SERVER['REMOTE_ADDR']??'127.0.0.1', ['127.0.0.1', '::1']) && !GEOOPT_DEBUG) )
-            return;
-
-        if( (($_GET['page']??'') == 'geo-optimizer') && (($_GET['action']??'') == 'clear-invalid') && wp_verify_nonce($_GET['nonce']??'', 'geo-optimizer-clear') ){
-
-            $this->clearInvalid();
-            wp_redirect(admin_url('tools.php?page=geo-optimizer'));
-            exit;
-        }
-
         add_action( 'admin_menu', [$this, 'admin_menu'] );
-    }
-
-    private function clearInvalid(){
-
-        global $wpdb;
-        $result = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT `post_id` from `$wpdb->postmeta` WHERE `meta_key` = 'geoopt' AND `meta_value`<0.01"));
-
-        foreach ($result as $item){
-
-            delete_post_meta($item->post_id, 'geoopt');
-            delete_post_meta($item->post_id, 'geoopt_details');
-            delete_post_meta($item->post_id, 'geoopt_pending');
-        }
-
-        $result = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT `term_id` from `$wpdb->termmeta` WHERE `meta_key` = 'geoopt' AND `meta_value`=0.01"));
-
-        foreach ($result as $item){
-
-            delete_term_meta($item->term_id, 'geoopt');
-            delete_term_meta($item->term_id, 'geoopt_details');
-            delete_term_meta($item->term_id, 'geoopt_pending');
-        }
     }
 
     public function getStatistics(){

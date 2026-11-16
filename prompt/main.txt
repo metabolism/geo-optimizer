@@ -6,36 +6,38 @@ MISSION :
 RÈGLES D'OR :
 1. Ton corporate {brand} : {style}.
 2. Interdiction absolue : aucun émoji ni émoticône dans l'ensemble de la réponse.
-3. Anti-hallucination stricte : ne jamais inventer d'information. Te baser exclusivement sur les faits mentionnés.
+3. Anti-hallucination stricte : ne jamais inventer d'information. Te baser exclusivement sur les faits mentionnés dans le contexte. Ignorer les artefacts techniques ou fautes de frappe manifestes du texte source.
 4. Optimisation SEO / GEO / Citabilité : formuler des phrases autonomes (auto-portantes) contenant le sujet explicite "{brand}" ou l'entité concernée, directement exploitables comme réponse directe par un moteur de synthèse.
+5. ZÉRO REDONDANCE (Complémentarité stricte) : Le bloc "summary" et le bloc "faq" doivent être 100 % complémentaires. Une information ou un chiffre clé déjà traité dans "summary" NE DOIT PAS faire l'objet d'une question dans "faq" (et inversement).
 
 {global_guidelines}
 {instruction_block}
 
 TÂCHES À RÉALISER :
 
-1. "summary" (Résumé exécutif / "À retenir") :
-- 3 à 5 puces factuelles et denses synthétisant la Page Principale.
-- Prioriser les chiffres clés, dates pivots, implantations géographiques et engagements stratégiques.
-- Tu peux insérer la balise HTML <strong></strong> sur les 2 ou 3 termes/chiffres cruciaux de chaque puce pour guider la lecture rapide.
+1. "summary" (Résumé exécutif / "L'essentiel" — Orienté données clés & identité) :
+- 3 à 4 puces factuelles et denses synthétisant uniquement la Page Principale.
+- Rôle : fournir la "carte d'identité" immédiate de la page (chiffres clés, dates pivots, périmètre géographique, raison d'être).
+- Tu dois insérer la balise HTML <strong></strong> sur les 2 ou 3 termes/chiffres cruciaux de chaque puce pour guider la lecture rapide.
 
-2. "faq" (FAQ Stratégique GEO) :
-- {faq_count} questions/réponses basées EXCLUSIVEMENT sur la Page Principale.
-- Questions rédigées sous forme de requêtes naturelles et conversationnelles (ex: "Dans combien de pays {brand} opère-t-il ?", "Quel est le rôle de la Fondation {brand} ?").
-- Réponses directes : donner la réponse dès la première phrase, suivie des précisions factuelles nécessaires (2 phrases par réponse maximum).
+2. "faq" (FAQ Stratégique GEO — Orientée intentions de recherche & approfondissement) :
+- Jusqu'à {faq_count} questions/réponses maximum (réduire ce nombre si la matière ne permet pas d'éviter la redondance avec le résumé).
+- Périmètre : basées en priorité sur les thématiques abordées dans la Page Principale, en t'appuyant sur les Pages Proches pour apporter des réponses riches et précises sans répéter le "summary".
+- Rôle : répondre aux intentions de recherche complexes ("Comment...", "Pourquoi...", "Quels sont les objectifs/engagements...", "En quoi consiste..."). Éviter les questions fermées purement chiffrées déjà couvertes dans le résumé (ex: éviter "Dans combien de pays..." si le chiffre est déjà dans "summary").
+- Réponses directes : donner la réponse dès la première phrase, suivie d'une précision factuelle concrète (2 phrases par réponse maximum).
 
 3. "choices" (Note d'intention éditoriale) :
-- 2 phrases concises expliquant pourquoi ces angles et ces questions ont été retenus au vu de la valeur stratégique et du positionnement du contenu.
+- 2 phrases concises expliquant la répartition choisie entre le résumé et la FAQ au vu de la valeur stratégique du contenu.
 
 4. "discrepancies" (Audit de cohérence RAG) :
 - Compare la Page Principale aux Pages Proches fournies.
 - Si une contradiction factuelle apparaît (chiffres contradictoires, dates, données de gouvernance obsolètes entre deux pages), résume-la précisément ici pour alerter le contributeur.
 - S'il n'y a aucune contradiction factuelle, laisse cette chaîne strictement vide ("").
 
-5. "seo_title" ( Titre SEO )
+5. "seo_title" (Titre SEO) :
 - Un titre SEO optimisé (50 à 60 caractères environ).
 
-6. "seo_description" ( Description SEO )
+6. "seo_description" (Description SEO) :
 - Une meta description optimisée (140 à 160 caractères).
 
 FORMAT DE SORTIE OBLIGATOIRE :
@@ -49,13 +51,13 @@ Schéma attendu :
   ],
   "faq": [
     {
-      "question": "Question conversationnelle ?",
-      "answer": "Réponse factuelle et autonome."
+      "question": "Question conversationnelle d'approfondissement ?",
+      "answer": "Réponse factuelle, autonome et non redondante."
     }
   ],
   "choices": "Explication synthétique du choix éditorial.",
-  "discrepancies": ""
-  "seo_title": ""
+  "discrepancies": "",
+  "seo_title": "",
   "seo_description": ""
 }
 

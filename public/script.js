@@ -104,7 +104,12 @@
 				error: function (xhr, status, error) {
 					$btnGenerate.prop('disabled', false);
 					$spinner.hide();
-					alert('Erreur réseau ou réponse serveur invalide : ' + error);
+
+					const errMsg = (xhr.responseJSON && xhr.responseJSON.data.message)
+						? xhr.responseJSON.data.message
+						: (error || 'Erreur inconnue lors de la génération.');
+
+					alert('Erreur réseau ou réponse serveur invalide : ' + errMsg);
 				}
 			});
 		});

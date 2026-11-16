@@ -1,12 +1,10 @@
 <?php
 
+if (!defined('ABSPATH')) exit;
 class GEOOPT_Settings{
 
-    private $options;
 
     public function __construct() {
-
-        $this->options = get_option('geoopt_settings');
 
         add_action( 'admin_menu', [$this, 'admin_menu'] );
         add_action( 'admin_init', [$this, 'admin_init'] );
@@ -16,6 +14,7 @@ class GEOOPT_Settings{
         add_filter( 'plugin_action_links_' . $plugin, [$this, 'plugin_action_links']);
         add_filter( 'network_admin_plugin_action_links_' . $plugin, [$this, 'plugin_action_links']);
     }
+
 
     /**
      * Add quick links to plugin list page
@@ -80,13 +79,13 @@ class GEOOPT_Settings{
 
         register_setting('geoopt_settings', 'geoopt_settings', [$this, 'sanitize']);
 
-        $options = get_option('geoopt_settings');
-        $options = is_array($options)?$options:[];
+        $options = GEOOPT::get_option();
 
         $options = array_merge([
                 'post_types'=>[],
                 'model'=>'',
                 'prompt'=>'',
+                'provider'=>'',
                 'style'=>'',
                 'faq_count'=>4,
                 'global_guidelines'=>'',
@@ -376,14 +375,15 @@ class GEOOPT_Settings{
         if(!str_starts_with($input['aws_access_key_id'] ?? '', '••'))
             $new_input['aws_access_key_id'] = GEOOPT_Helper::encrypt_secret(sanitize_text_field( $input['aws_access_key_id']??'' ));
         else
-            $new_input['aws_access_key_id'] = $this->options['aws_access_key_id'];
+            $new_input['aws_access_key_id'] = GEOOPT::get_option('aws_access_key_id');
 
         if(!str_starts_with($input['aws_secret_access_key'] ?? '', '••'))
             $new_input['aws_secret_access_key'] = GEOOPT_Helper::encrypt_secret(sanitize_text_field( $input['aws_secret_access_key']??'' ));
         else
-            $new_input['aws_secret_access_key'] = $this->options['aws_secret_access_key'];
+            $new_input['aws_secret_access_key'] = GEOOPT::get_option('aws_secret_access_key');
 
         $new_input['kb_id'] = sanitize_text_field($input['kb_id']??'');
+        $new_input['provider'] = sanitize_text_field('AWS Bedrock');
         $new_input['model'] = sanitize_text_field($input['model']??'');
         $new_input['style'] = sanitize_text_field($input['style']??'');
         $new_input['global_guidelines'] = sanitize_text_field($input['global_guidelines']??'');

@@ -1,17 +1,15 @@
 <?php
 
-class GEOOPT_Listing{
+if (!defined('ABSPATH')) exit;
 
-    private $options;
+class GEOOPT_Listing{
 
     public function __construct()
     {
-        if( !is_admin() || !get_option('geoopt_enabled') )
+        if( !is_admin() || !GEOOPT::is_enabled() )
             return;
 
-        $this->options = get_option('geoopt_settings');
-
-        foreach ($this->options['post_types']??[] as $post_type){
+        foreach (GEOOPT::get_option('post_types', []) as $post_type){
 
             add_filter( "manage_{$post_type}_posts_columns", [ $this, 'manage_columns' ] );
             add_action( "manage_{$post_type}_posts_custom_column", [ $this, 'manage_posts_custom_column' ], 10, 2 );

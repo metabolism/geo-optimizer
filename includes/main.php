@@ -1,22 +1,55 @@
 <?php
 
-class GEOOPT_MAIN{
+if (!defined('ABSPATH')) exit;
+
+class GEOOPT{
 
     public  $version = GEOOPT_VERSION;
     private $plugin_dir_path;
     private $plugin_dir_url;
-    private $options;
+
+    private static $options;
+    private static $is_enabled;
 
     public function __construct() {
+
+        self::$options = get_option('geoopt_settings');
+        self::$is_enabled = get_option('geoopt_enabled');
 
         $this->loadAll();
 
         // Initialize Variables
         $this->plugin_dir_path = plugin_dir_path( GEOOPT_FILE );
         $this->plugin_dir_url  = plugin_dir_url( GEOOPT_FILE );
-        $this->options  = get_option('geoopt_settings');
 
         add_action( 'admin_head', [$this, 'admin_head'] );
+    }
+
+    /**
+     * @param null $value
+     * @param null $default
+     * @return false|mixed|null
+     */
+    public static function get_option($value=null, $default=null)
+    {
+        if( $value )
+            return self::$options[$value]??$default;
+
+        return (array)self::$options;
+    }
+
+    public static function is_enabled()
+    {
+        return (bool)self::$is_enabled;
+    }
+
+    /**
+     * @param $post_id
+     * @return mixed|string
+     */
+    public static function get_disclosure_level($post_id)
+    {
+        return get_post_meta($post_id, 'geo_ai_disclosure_level', true) ?: 'none';
     }
 
     public function loadAll(){
@@ -32,6 +65,7 @@ class GEOOPT_MAIN{
         include GEOOPT_DIR.'/includes/generation.php';
         include GEOOPT_DIR.'/includes/review.php';
         include GEOOPT_DIR.'/includes/listing.php';
+        include GEOOPT_DIR.'/includes/schema.php';
     }
 
     /**
@@ -62,7 +96,6 @@ class GEOOPT_MAIN{
                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                 'post_id'  => $post ? $post->ID : 0,
                 'nonce'    => wp_create_nonce('geo-opt'),
-                'reference'=>$this->options['reference']??0
             ]
         );
     }

@@ -66,6 +66,7 @@ class GEOOPT{
         include GEOOPT_DIR.'/includes/review.php';
         include GEOOPT_DIR.'/includes/listing.php';
         include GEOOPT_DIR.'/includes/schema.php';
+        include GEOOPT_DIR.'/includes/post.php';
     }
 
     /**

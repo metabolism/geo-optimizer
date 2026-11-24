@@ -24,7 +24,8 @@
   },
   "require": {
     "guzzlehttp/guzzle": "^7.0",
-    "aws/aws-sdk-php": "^3.402"
+    "aws/aws-sdk-php": "^3.402",
+    "league/html-to-markdown": "^5.2"
   },
   "scripts": {
     "post-install-cmd": [

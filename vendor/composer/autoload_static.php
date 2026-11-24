@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
+class ComposerStaticInitec134d2359a9e1c16e7a35866b69df6f
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -29,6 +29,10 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+        ),
+        'L' => 
+        array (
+            'League\\HTMLToMarkdown\\' => 22,
         ),
         'J' => 
         array (
@@ -71,6 +75,10 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'League\\HTMLToMarkdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/html-to-markdown/src',
         ),
         'JmesPath\\' => 
         array (
@@ -123,19 +131,27 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\ACMPCA\\Exception\\ACMPCAException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ACMPCA/Exception/ACMPCAException.php',
         'Aws\\AIOps\\AIOpsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AIOps/AIOpsClient.php',
         'Aws\\AIOps\\Exception\\AIOpsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AIOps/Exception/AIOpsException.php',
+        'Aws\\APIPortal\\APIPortalClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/APIPortal/APIPortalClient.php',
+        'Aws\\APIPortal\\Exception\\APIPortalException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/APIPortal/Exception/APIPortalException.php',
         'Aws\\ARCRegionSwitch\\ARCRegionSwitchClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ARCRegionSwitch/ARCRegionSwitchClient.php',
         'Aws\\ARCRegionSwitch\\Exception\\ARCRegionSwitchException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ARCRegionSwitch/Exception/ARCRegionSwitchException.php',
         'Aws\\ARCZonalShift\\ARCZonalShiftClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ARCZonalShift/ARCZonalShiftClient.php',
         'Aws\\ARCZonalShift\\Exception\\ARCZonalShiftException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ARCZonalShift/Exception/ARCZonalShiftException.php',
         'Aws\\AbstractConfigurationProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AbstractConfigurationProvider.php',
+        'Aws\\AbuseSignal\\AbuseSignalClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AbuseSignal/AbuseSignalClient.php',
+        'Aws\\AbuseSignal\\Exception\\AbuseSignalException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AbuseSignal/Exception/AbuseSignalException.php',
         'Aws\\AccessAnalyzer\\AccessAnalyzerClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccessAnalyzer/AccessAnalyzerClient.php',
         'Aws\\AccessAnalyzer\\Exception\\AccessAnalyzerException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccessAnalyzer/Exception/AccessAnalyzerException.php',
+        'Aws\\AccountAccessRuntime\\AccountAccessRuntimeClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccountAccessRuntime/AccountAccessRuntimeClient.php',
+        'Aws\\AccountAccessRuntime\\Exception\\AccountAccessRuntimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccountAccessRuntime/Exception/AccountAccessRuntimeException.php',
         'Aws\\AccountAccess\\AccountAccessClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccountAccess/AccountAccessClient.php',
         'Aws\\AccountAccess\\Exception\\AccountAccessException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AccountAccess/Exception/AccountAccessException.php',
         'Aws\\Account\\AccountClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Account/AccountClient.php',
         'Aws\\Account\\Exception\\AccountException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Account/Exception/AccountException.php',
         'Aws\\Acm\\AcmClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Acm/AcmClient.php',
         'Aws\\Acm\\Exception\\AcmException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Acm/Exception/AcmException.php',
+        'Aws\\AgentDiscovery\\AgentDiscoveryClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AgentDiscovery/AgentDiscoveryClient.php',
+        'Aws\\AgentDiscovery\\Exception\\AgentDiscoveryException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AgentDiscovery/Exception/AgentDiscoveryException.php',
         'Aws\\AgentRegistryControl\\AgentRegistryControlClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AgentRegistryControl/AgentRegistryControlClient.php',
         'Aws\\AgentRegistryControl\\Exception\\AgentRegistryControlException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AgentRegistryControl/Exception/AgentRegistryControlException.php',
         'Aws\\AgentRegistry\\AgentRegistryClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AgentRegistry/AgentRegistryClient.php',
@@ -188,6 +204,10 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\Api\\Parser\\RpcV2CborParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/RpcV2CborParser.php',
         'Aws\\Api\\Parser\\RpcV2ParserTrait' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/RpcV2ParserTrait.php',
         'Aws\\Api\\Parser\\XmlParser' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Parser/XmlParser.php',
+        'Aws\\Api\\Serde\\Http\\HttpRequestBindingPlan' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Http/HttpRequestBindingPlan.php',
+        'Aws\\Api\\Serde\\Http\\HttpRequestBindingPlanProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Http/HttpRequestBindingPlanProvider.php',
+        'Aws\\Api\\Serde\\Http\\HttpResponseBindingPlan' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Http/HttpResponseBindingPlan.php',
+        'Aws\\Api\\Serde\\Http\\HttpResponseBindingPlanProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Http/HttpResponseBindingPlanProvider.php',
         'Aws\\Api\\Serde\\Json\\JsonDecodePlan' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Json/JsonDecodePlan.php',
         'Aws\\Api\\Serde\\Json\\JsonDecodePlanProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Json/JsonDecodePlanProvider.php',
         'Aws\\Api\\Serde\\Json\\JsonEncodePlan' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Api/Serde/Json/JsonEncodePlan.php',
@@ -455,6 +475,8 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\ConnectHealth\\Exception\\ConnectHealthException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectHealth/Exception/ConnectHealthException.php',
         'Aws\\ConnectParticipant\\ConnectParticipantClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectParticipant/ConnectParticipantClient.php',
         'Aws\\ConnectParticipant\\Exception\\ConnectParticipantException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectParticipant/Exception/ConnectParticipantException.php',
+        'Aws\\ConnectScheduling\\ConnectSchedulingClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectScheduling/ConnectSchedulingClient.php',
+        'Aws\\ConnectScheduling\\Exception\\ConnectSchedulingException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectScheduling/Exception/ConnectSchedulingException.php',
         'Aws\\ConnectWisdomService\\ConnectWisdomServiceClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectWisdomService/ConnectWisdomServiceClient.php',
         'Aws\\ConnectWisdomService\\Exception\\ConnectWisdomServiceException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ConnectWisdomService/Exception/ConnectWisdomServiceException.php',
         'Aws\\Connect\\ConnectClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Connect/ConnectClient.php',
@@ -953,6 +975,8 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\Odb\\OdbClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Odb/OdbClient.php',
         'Aws\\Omics\\Exception\\OmicsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Omics/Exception/OmicsException.php',
         'Aws\\Omics\\OmicsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Omics/OmicsClient.php',
+        'Aws\\OpenSearchMemory\\Exception\\OpenSearchMemoryException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/OpenSearchMemory/Exception/OpenSearchMemoryException.php',
+        'Aws\\OpenSearchMemory\\OpenSearchMemoryClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/OpenSearchMemory/OpenSearchMemoryClient.php',
         'Aws\\OpenSearchServerless\\Exception\\OpenSearchServerlessException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/OpenSearchServerless/Exception/OpenSearchServerlessException.php',
         'Aws\\OpenSearchServerless\\OpenSearchServerlessClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/OpenSearchServerless/OpenSearchServerlessClient.php',
         'Aws\\OpenSearchService\\Exception\\OpenSearchServiceException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/OpenSearchService/Exception/OpenSearchServiceException.php',
@@ -971,6 +995,8 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\PartnerCentralBenefits\\PartnerCentralBenefitsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralBenefits/PartnerCentralBenefitsClient.php',
         'Aws\\PartnerCentralChannel\\Exception\\PartnerCentralChannelException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralChannel/Exception/PartnerCentralChannelException.php',
         'Aws\\PartnerCentralChannel\\PartnerCentralChannelClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralChannel/PartnerCentralChannelClient.php',
+        'Aws\\PartnerCentralMarketing\\Exception\\PartnerCentralMarketingException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralMarketing/Exception/PartnerCentralMarketingException.php',
+        'Aws\\PartnerCentralMarketing\\PartnerCentralMarketingClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralMarketing/PartnerCentralMarketingClient.php',
         'Aws\\PartnerCentralRevenueMeasurement\\Exception\\PartnerCentralRevenueMeasurementException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralRevenueMeasurement/Exception/PartnerCentralRevenueMeasurementException.php',
         'Aws\\PartnerCentralRevenueMeasurement\\PartnerCentralRevenueMeasurementClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralRevenueMeasurement/PartnerCentralRevenueMeasurementClient.php',
         'Aws\\PartnerCentralSelling\\Exception\\PartnerCentralSellingException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PartnerCentralSelling/Exception/PartnerCentralSellingException.php',
@@ -979,6 +1005,8 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\PaymentCryptographyData\\PaymentCryptographyDataClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PaymentCryptographyData/PaymentCryptographyDataClient.php',
         'Aws\\PaymentCryptography\\Exception\\PaymentCryptographyException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PaymentCryptography/Exception/PaymentCryptographyException.php',
         'Aws\\PaymentCryptography\\PaymentCryptographyClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PaymentCryptography/PaymentCryptographyClient.php',
+        'Aws\\Payments\\Exception\\PaymentsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Payments/Exception/PaymentsException.php',
+        'Aws\\Payments\\PaymentsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Payments/PaymentsClient.php',
         'Aws\\PcaConnectorAd\\Exception\\PcaConnectorAdException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PcaConnectorAd/Exception/PcaConnectorAdException.php',
         'Aws\\PcaConnectorAd\\PcaConnectorAdClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PcaConnectorAd/PcaConnectorAdClient.php',
         'Aws\\PcaConnectorScep\\Exception\\PcaConnectorScepException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/PcaConnectorScep/Exception/PcaConnectorScepException.php',
@@ -1059,16 +1087,13 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\ResultInterface' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ResultInterface.php',
         'Aws\\ResultPaginator' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ResultPaginator.php',
         'Aws\\RetryMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RetryMiddleware.php',
-        'Aws\\RetryMiddlewareV2' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RetryMiddlewareV2.php',
         'Aws\\Retry\\Configuration' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/Configuration.php',
         'Aws\\Retry\\ConfigurationInterface' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/ConfigurationInterface.php',
         'Aws\\Retry\\ConfigurationProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/ConfigurationProvider.php',
         'Aws\\Retry\\Exception\\ConfigurationException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/Exception/ConfigurationException.php',
-        'Aws\\Retry\\QuotaManager' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/QuotaManager.php',
         'Aws\\Retry\\RateLimiter' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/RateLimiter.php',
         'Aws\\Retry\\RetryHelperTrait' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/RetryHelperTrait.php',
         'Aws\\Retry\\V3\\LongPolling' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/V3/LongPolling.php',
-        'Aws\\Retry\\V3\\OptIn' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/V3/OptIn.php',
         'Aws\\Retry\\V3\\QuotaManager' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/V3/QuotaManager.php',
         'Aws\\Retry\\V3\\RetryMiddleware' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/Retry/V3/RetryMiddleware.php',
         'Aws\\RolesAnywhere\\Exception\\RolesAnywhereException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/RolesAnywhere/Exception/RolesAnywhereException.php',
@@ -1222,8 +1247,12 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'Aws\\SSO\\SSOClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SSO/SSOClient.php',
         'Aws\\SageMakerFeatureStoreRuntime\\Exception\\SageMakerFeatureStoreRuntimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerFeatureStoreRuntime/Exception/SageMakerFeatureStoreRuntimeException.php',
         'Aws\\SageMakerFeatureStoreRuntime\\SageMakerFeatureStoreRuntimeClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerFeatureStoreRuntime/SageMakerFeatureStoreRuntimeClient.php',
+        'Aws\\SageMakerGatewayRuntime\\Exception\\SageMakerGatewayRuntimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerGatewayRuntime/Exception/SageMakerGatewayRuntimeException.php',
+        'Aws\\SageMakerGatewayRuntime\\SageMakerGatewayRuntimeClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerGatewayRuntime/SageMakerGatewayRuntimeClient.php',
         'Aws\\SageMakerGeospatial\\Exception\\SageMakerGeospatialException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerGeospatial/Exception/SageMakerGeospatialException.php',
         'Aws\\SageMakerGeospatial\\SageMakerGeospatialClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerGeospatial/SageMakerGeospatialClient.php',
+        'Aws\\SageMakerInferenceRouterRuntime\\Exception\\SageMakerInferenceRouterRuntimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerInferenceRouterRuntime/Exception/SageMakerInferenceRouterRuntimeException.php',
+        'Aws\\SageMakerInferenceRouterRuntime\\SageMakerInferenceRouterRuntimeClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerInferenceRouterRuntime/SageMakerInferenceRouterRuntimeClient.php',
         'Aws\\SageMakerMetrics\\Exception\\SageMakerMetricsException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerMetrics/Exception/SageMakerMetricsException.php',
         'Aws\\SageMakerMetrics\\SageMakerMetricsClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerMetrics/SageMakerMetricsClient.php',
         'Aws\\SageMakerRuntime\\Exception\\SageMakerRuntimeException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/SageMakerRuntime/Exception/SageMakerRuntimeException.php',
@@ -1508,6 +1537,39 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
         'JmesPath\\TreeCompiler' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeCompiler.php',
         'JmesPath\\TreeInterpreter' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/TreeInterpreter.php',
         'JmesPath\\Utils' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/Utils.php',
+        'League\\HTMLToMarkdown\\Backticks' => __DIR__ . '/..' . '/league/html-to-markdown/src/Backticks.php',
+        'League\\HTMLToMarkdown\\Coerce' => __DIR__ . '/..' . '/league/html-to-markdown/src/Coerce.php',
+        'League\\HTMLToMarkdown\\Configuration' => __DIR__ . '/..' . '/league/html-to-markdown/src/Configuration.php',
+        'League\\HTMLToMarkdown\\ConfigurationAwareInterface' => __DIR__ . '/..' . '/league/html-to-markdown/src/ConfigurationAwareInterface.php',
+        'League\\HTMLToMarkdown\\Converter\\BlockquoteConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/BlockquoteConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\CodeConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/CodeConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\CommentConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/CommentConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\ConverterInterface' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/ConverterInterface.php',
+        'League\\HTMLToMarkdown\\Converter\\DefaultConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/DefaultConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\DivConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/DivConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\EmphasisConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/EmphasisConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\HardBreakConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/HardBreakConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\HeaderConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/HeaderConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\HorizontalRuleConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/HorizontalRuleConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\ImageConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/ImageConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\LinkConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/LinkConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\ListBlockConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/ListBlockConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\ListItemConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/ListItemConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\ParagraphConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/ParagraphConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\PreformattedConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/PreformattedConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\TableConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/TableConverter.php',
+        'League\\HTMLToMarkdown\\Converter\\TextConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/Converter/TextConverter.php',
+        'League\\HTMLToMarkdown\\Element' => __DIR__ . '/..' . '/league/html-to-markdown/src/Element.php',
+        'League\\HTMLToMarkdown\\ElementInterface' => __DIR__ . '/..' . '/league/html-to-markdown/src/ElementInterface.php',
+        'League\\HTMLToMarkdown\\Environment' => __DIR__ . '/..' . '/league/html-to-markdown/src/Environment.php',
+        'League\\HTMLToMarkdown\\HtmlConverter' => __DIR__ . '/..' . '/league/html-to-markdown/src/HtmlConverter.php',
+        'League\\HTMLToMarkdown\\HtmlConverterInterface' => __DIR__ . '/..' . '/league/html-to-markdown/src/HtmlConverterInterface.php',
+        'League\\HTMLToMarkdown\\LinkSyntax' => __DIR__ . '/..' . '/league/html-to-markdown/src/LinkSyntax.php',
+        'League\\HTMLToMarkdown\\NoBreakSpaces' => __DIR__ . '/..' . '/league/html-to-markdown/src/NoBreakSpaces.php',
+        'League\\HTMLToMarkdown\\PreConverterInterface' => __DIR__ . '/..' . '/league/html-to-markdown/src/PreConverterInterface.php',
+        'League\\HTMLToMarkdown\\PrecedingMarkdown' => __DIR__ . '/..' . '/league/html-to-markdown/src/PrecedingMarkdown.php',
+        'League\\HTMLToMarkdown\\RawHtml' => __DIR__ . '/..' . '/league/html-to-markdown/src/RawHtml.php',
+        'League\\HTMLToMarkdown\\SiblingPositionCache' => __DIR__ . '/..' . '/league/html-to-markdown/src/SiblingPositionCache.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
         'Psr\\Http\\Client\\ClientInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientInterface.php',
@@ -1546,9 +1608,9 @@ class ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7761d7f9fcff66ccd3e5f35cefb50030::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitec134d2359a9e1c16e7a35866b69df6f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitec134d2359a9e1c16e7a35866b69df6f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitec134d2359a9e1c16e7a35866b69df6f::$classMap;
 
         }, null, ClassLoader::class);
     }
